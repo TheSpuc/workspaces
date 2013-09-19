@@ -28,7 +28,7 @@ public class Client {
 				System.out.println("Package have been received, ip of nameServer is " + received);
 				numberOfTimesTried = 3;
 			}catch(SocketTimeoutException ste){
-				System.out.println("Problem getting responds, trying on more time");
+				System.err.println("Problem getting responds, trying on more time");
 				numberOfTimesTried++;
 			}
 		}

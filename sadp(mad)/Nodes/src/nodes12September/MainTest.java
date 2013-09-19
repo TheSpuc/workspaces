@@ -10,18 +10,29 @@ public class MainTest {
 		
 		LinkedList<String> list = new LinkedList<>();
 		
-		list.printElements();
+//		list.printElements();
 		
 		list.addElement(s1);
 		list.addElement(s2);
 		list.addElement(s3);
 		
-		list.printElements();
+//		list.printElements();
 		
 //		list.removeElement("Jan");
 //		list.removeElement("Hans");
 		
-//		System.out.println();
-//		list.printElements();
+		System.out.println();
+		
+		LinkedList<String> sortList = new LinkedList<>();
+		sortList.addElement("Abe");
+		sortList.addElement("Ole");
+		sortList.addElement("Iver");
+		sortList.addElement("Rand");
+		sortList.addElement("Wii");
+//		sortList.printElements();
+		
+		list.addAll(sortList);
+		System.out.println();
+		list.printElements();
 	}
 }
