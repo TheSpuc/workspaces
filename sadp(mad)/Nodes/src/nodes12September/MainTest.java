@@ -25,8 +25,8 @@ public class MainTest {
 		
 		LinkedList<String> sortList = new LinkedList<>();
 		sortList.addElement("Abe");
-		sortList.addElement("Ole");
 		sortList.addElement("Iver");
+		sortList.addElement("Ole");
 		sortList.addElement("Rand");
 		sortList.addElement("Wii");
 //		sortList.printElements();
