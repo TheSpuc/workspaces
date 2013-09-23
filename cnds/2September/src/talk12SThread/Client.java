@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+import nameServer.NameServerClient;
+
 public class Client {
 
 	private static final String myName = "mmb";
@@ -13,9 +15,17 @@ public class Client {
 
 	public static void main(String[] args) throws Exception{
 		in = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Please input the ip you want to connect to");
+		System.out.println("Finding possible people to chat with");
+		String[] nameServerArgs = {"#502"};
+		NameServerClient.main(nameServerArgs);
+		
+		System.out.println("Please input the person you want to connect to");
+		String pickPerson = in.readLine();
+		String[] nameServerPerson = {pickPerson};
+		NameServerClient.main(nameServerPerson);
+		
+		System.out.println("Please input the newly located ip for connection to client:");
 		recieverIp = in.readLine();
-
 		Socket clientSocket = new Socket(recieverIp,7531);
 
 		DataOutputStream outToPeer = new DataOutputStream(clientSocket.getOutputStream()); //For sending messages to the other peer
@@ -37,7 +47,7 @@ public class Client {
 			
 			in.join();
 			out.join();
-		
+			
 		}
 		System.out.println("Closing connection");
 		clientSocket.close();

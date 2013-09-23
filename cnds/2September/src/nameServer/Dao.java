@@ -27,4 +27,10 @@ public class Dao {
 		return map.get(key);
 	}
 	
+	public Map<String, NameClient> getClients(){
+		synchronized (dao) {
+			return new HashMap<>(map);
+		}
+	}
+	
 }

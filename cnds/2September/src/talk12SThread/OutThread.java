@@ -29,8 +29,8 @@ public class OutThread extends Thread {
 				String peer = in.readLine();
 				outToPeer.writeBytes(peer + '\n');
 				running = CheckConnectionInput.ongoingConnection(peer);
-			} catch (IOException e) {
-				e.printStackTrace();
+			} catch (Exception e) {
+				running = false;
 			}
 		}
 	}

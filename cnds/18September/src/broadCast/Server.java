@@ -2,13 +2,14 @@ package broadCast;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 
 public class Server {
 	
 	private static String nameServerIp;
 	
 	public static void main(String[] args) throws Exception{
-		nameServerIp = "127.0.0.1";
+		nameServerIp = InetAddress.getLocalHost().toString();
 		DatagramSocket server = new DatagramSocket(8888);
 		server.setBroadcast(true);
 		while(true){

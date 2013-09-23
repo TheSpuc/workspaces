@@ -3,6 +3,9 @@ package talk12SThread;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,6 +16,20 @@ public class Server {
 	public static void main(String[] args) throws Exception{
 		in = new BufferedReader(new InputStreamReader(System.in));
 
+		//NameServer part:
+		System.out.println("Please input your client name");
+		String sentence = "#501 " + in.readLine();
+		DatagramSocket clientSocket = new DatagramSocket();
+		byte[] sendData = new byte[1024]; 
+		sendData = sentence.getBytes(); 
+		
+		InetAddress IPAddress = InetAddress.getByName("localhost"); 
+		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876); 
+		clientSocket.send(sendPacket); 
+		clientSocket.close();
+
+		
+		//Chat server
 		ServerSocket welcomeSocket = new ServerSocket(7531);
 		boolean runServer = true;
 		while(runServer){ //for making it possible for the server to run unlimited.
@@ -45,7 +62,6 @@ public class Server {
 						
 						out.join();
 						in.join();
-						
 					}
 				}
 			}

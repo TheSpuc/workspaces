@@ -24,20 +24,25 @@ public class FindClientThread extends Thread {
 
 	public void run(){
 		while(running){
-			NameClient toSend = service.getNameClient(sentence);
-			if(toSend != null){
-				InetAddress ip = packet.getAddress();
-				int port = packet.getPort();
-				String sendInformation = ip + "";
-				byte[] sendData = sendInformation.getBytes();
-
-				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ip, port);
-				try {
-					serverSocket.send(sendPacket);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			String sendInformation = "";
+			if(sentence.startsWith("#502")){
+				sendInformation = service.getClients();
+			}else{
+				NameClient toSend = service.getNameClient(sentence);
+				if(toSend != null){
+					sendInformation = toSend.getIp() + "";
 				}
+			}
+			InetAddress ip = packet.getAddress();
+			int port = packet.getPort();
+			byte[] sendData = sendInformation.getBytes();
+
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, ip, port);
+			try {
+				serverSocket.send(sendPacket);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			running = false;
 		}

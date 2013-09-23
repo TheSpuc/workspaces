@@ -26,9 +26,8 @@ public class InThread extends Thread {
 				String responds = inFromPeer.readLine();
 				System.out.println("Message:" + responds);
 				running = CheckConnectionInput.ongoingConnection(responds);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (Exception e) {
+				running = false;
 			}
 		}
 	}
