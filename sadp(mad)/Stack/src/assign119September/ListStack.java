@@ -18,12 +18,20 @@ public class ListStack<T> implements StackI<T> {
 
 	@Override
 	public T pop() {
-		return list.remove(list.size()-1);
+		T result = null;
+		if(!isEmpty()){
+			result = list.remove(list.size()-1);
+		}
+		return result;
 	}
 
 	@Override
 	public T peek() {
-		return list.get(list.size()-1);
+		T result = null;
+		if(!isEmpty()){
+			result = list.get(list.size()-1);
+		}
+		return result;
 	}
 
 	@Override

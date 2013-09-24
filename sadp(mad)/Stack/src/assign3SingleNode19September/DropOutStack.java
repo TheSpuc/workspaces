@@ -36,14 +36,20 @@ public class DropOutStack<T> implements DropOutStackI<T> {
 	@Override
 	public T pop() {
 		Node temp = top;
-		top = temp.pre;
-		numberOfEntries--;
+		if(!isEmpty()){
+			top = temp.pre;
+			numberOfEntries--;
+		}
 		return temp.data;
 	}
 
 	@Override
 	public T peek() {
-		return top.data;
+		T result = null;
+		if(!isEmpty()){
+			result = top.data;
+		}
+		return result;
 	}
 
 	@Override

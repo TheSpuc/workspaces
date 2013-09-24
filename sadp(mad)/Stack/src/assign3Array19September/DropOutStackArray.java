@@ -28,17 +28,22 @@ public class DropOutStackArray<T> implements DropOutStackI<T> {
 
 	@Override
 	public T pop() {
-		T result = array[numberOfEntries-1];
-		array[numberOfEntries-1] = null;
-		numberOfEntries--;
+		T result = null;
+		if(!isEmpty()){
+			result = array[numberOfEntries-1];
+			array[numberOfEntries-1] = null;
+			numberOfEntries--;
+		}
 		return result;
 	}
 
 	@Override
 	public T peek() {
-		if(numberOfEntries == 0){
-			return array[numberOfEntries];
-		}else return array[numberOfEntries-1];
+		T result = null;
+		if(!isEmpty()){
+			result = array[numberOfEntries-1];
+		}
+		return result;
 	}
 
 	@Override

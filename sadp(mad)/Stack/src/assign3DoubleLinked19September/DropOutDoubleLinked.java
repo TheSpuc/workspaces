@@ -47,8 +47,8 @@ public class DropOutDoubleLinked<T> implements DropOutStackI<T> {
 			temp.data = null;
 			temp.post = null;
 			temp.pre = null;
+			numberOfEntries--;
 		}
-		numberOfEntries--;
 		return result;
 	}
 
