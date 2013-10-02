@@ -6,8 +6,8 @@ public class DequeDoubleLinkedNode<E> implements DequeI<E> {
 	private int numberOfEntries;
 	
 	/**
-	 * Like reading, Head is always left, as in post of the first element
-	 * and tail is always right, as in pre of the last element.
+	 * Like reading, Head is always left, as in pre of the first element
+	 * and tail is always right, as in post of the last element.
 	 * Head and tail starts by pointing at each other.
 	 */
 	public DequeDoubleLinkedNode(){
@@ -45,6 +45,7 @@ public class DequeDoubleLinkedNode<E> implements DequeI<E> {
 		if(!isEmpty()){
 			Node temp = head.pre;
 			head.pre = temp.pre;
+			head.pre.post = head;
 			numberOfEntries--;
 			return temp.data;
 		}
@@ -56,6 +57,7 @@ public class DequeDoubleLinkedNode<E> implements DequeI<E> {
 		if(!isEmpty()){
 			Node temp = tail.post;
 			tail.post = temp.post;
+			tail.post.pre = tail;
 			numberOfEntries--;
 			return temp.data;
 		}
@@ -90,8 +92,6 @@ public class DequeDoubleLinkedNode<E> implements DequeI<E> {
 
 	@Override
 	public void clear() {
-		head = new Node();
-		tail = new Node();
 		head.pre = tail;
 		tail.post = head;
 		numberOfEntries = 0;

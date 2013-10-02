@@ -3,7 +3,7 @@ package assign425September;
 public class CircularList<T> {
 
 	private Node firstNode;
-	private Node randomStart = new Node();
+	private Node randomStart;
 
 	public CircularList(){
 		firstNode = new Node();
