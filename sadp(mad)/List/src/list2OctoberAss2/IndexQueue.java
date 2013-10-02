@@ -2,39 +2,35 @@ package list2OctoberAss2;
 
 public class IndexQueue<E> implements QueueI<E> {
 
-	private IndexListI adapter;
+	private ListI<E> adapter;
 	
 	public IndexQueue(){
-		adapter = new LinkedIndexList<>(); 
+		adapter = new LinkedList<>(); 
 	}
 	
 	@Override
 	public void enqueue(E entry) {
-		
+		adapter.add(0, entry);
 	}
 
 	@Override
 	public E dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+		return adapter.remove(0);
 	}
 
 	@Override
 	public E getFront() {
-		// TODO Auto-generated method stub
-		return null;
+		return adapter.get(0);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return adapter.isEmpty();
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		adapter = new LinkedList<>();
 	}
 
 }
