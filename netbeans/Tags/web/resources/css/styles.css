@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+.true {
+	color: blue;
+}
+
+.false {
+	color: red;
+}
+
+#testId {
+	color: green;
+}

@@ -1,0 +1,29 @@
+/* 
+    Document   : style
+    Created on : 20-08-2013, 11:35:32
+    Author     : Mark Medum Bundgaard
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#table1 caption{
+    font-style: italic;
+}
+
+#table1 thead td {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+thead tr{
+    color: red;
+}
+
+tbody td{
+    border: 1px solid greenyellow;
+}
+

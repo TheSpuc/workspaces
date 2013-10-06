@@ -1,0 +1,25 @@
+Husk
+
+Hvis hastighed paa spillere skal laves om skal det ske i dao hvor topspeed bliver loaded.
+Settingsframe omregner efter samme princip saa lav om der samtidig baade i actionlistener og ovenover
+
+
+Forslag til Navn: Legends, Football Legends, Footie Legends, Legends of Football, Game of Legends
+
+
+http://80.198.124.75/footie/
+
+website database: footiesite
+brugernavn: footieman
+pw: Lommen
+
+Site admin: footieman
+
+user: rune
+pw: rune1010#
+
+
+Kør testmain eller matchengine
+Log på putty
+skriv sudo su [enter] (password for rune)
+hvis jar filen hedder testmain.jar så skriv java -jar testmain.jar

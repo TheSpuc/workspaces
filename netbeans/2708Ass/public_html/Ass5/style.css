@@ -1,0 +1,38 @@
+/* 
+    Document   : style
+    Created on : 31-08-2013, 13:25:09
+    Author     : mmb
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+laptop{
+    margin-bottom: 30px;
+    display: block;
+}
+
+hardware{
+    display: block;
+    margin-bottom: 10px;
+}
+
+software{
+    display: block;
+    margin-bottom: 10px;
+}
+
+laptops{
+    font-family: monospace;
+    background-color:#ccff00;
+    
+}
+
+laptop{
+   margin-bottom: 30px; 
+}
+
+

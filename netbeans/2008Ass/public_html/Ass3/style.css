@@ -1,0 +1,73 @@
+/* 
+    Document   : style
+    Created on : 20-08-2013, 15:42:38
+    Author     : mmb
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+#headerContainer{
+    margin: 0 auto;
+    width: 990px;
+}
+
+#mainHead{
+    position: absolute;
+    background: #000000;
+    padding-left: 15px;
+    padding-top: 0px; 
+    margin-bottom: 100px;
+    width: 1009px; 
+    height:300px;
+    background-image: url("images/header.png");
+    background-repeat: no-repeat;
+}
+
+#contentContainer{
+    width: 990px;
+    margin: 0 auto;
+    padding-top: 300px;
+    overflow: hidden;
+    clear:both;   
+}
+
+#mainContent{
+    padding: 15px;
+    padding-top: 0px;
+    float: left;
+    width: 708px;
+    border-right-style: solid;
+    border-width: 1px;
+    border-color: #D3D2CB;
+    margin-bottom: 10px;
+}
+
+/* nav tag defined*/
+
+nav ul{
+    font-size: 24px;
+    padding-left: 10px;
+}
+
+nav ul li{
+    display: inline;
+    margin-right: 34px;
+    list-style-type: none; /*older browsers wont display the icon */
+}
+
+nav li a{
+    color: #fff;
+    text-decoration: none;
+}
+
+nav li a:hover{
+    text-decoration: underline;
+}
+
+table th, td{
+    border: 1px solid black;
+}

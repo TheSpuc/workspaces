@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>6</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>666</x>
+      <y>78</y>
+      <w>264</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Users&gt;&gt;
+--
+-id: Serial Primary Key
+-username: varchar(60) NOT NULL (UNIQUE)
+-password: varchar(128) NOT NULL
+-email: varchar(255) NOT NULL (UNIQUE)
+-created: int NOT NULL
+-access: int NOT NULL
+-login: int NOT NULL
+-status: int NOT NULL DEFAULT 0
+-signature: varchar(255) NOT NULL
+-locale: varchar(3) NOT NULL DEFAULT 'eng'
+-timezone: varchar(4) NOT NULL DEFAULT -8
+-totalPosts: int NOT NULL
+-totalTopics: int NOT NULL
+-currentLogin: timestamp DEFAULT NULL
+-lastLogin: timestamp DEFAULT NULL</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>552</x>
+      <y>288</y>
+      <w>216</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Clubs&gt;&gt;
+
+--
+-id: Serial Primary Key
+-clubname: varchar(60) NOT NULL
+-shortname: varchar(6) NOT NULL
+-league_id: int REFERENCES leagues(id)
+-firstcolor: int NOT NULL
+-secondcolor: int NOT NULL
+-stadium_id: int REFERENCES stadiums(id)
+-money: int NOT NULL
+-user_id: int REFERENCES users(id)
+-trainingfacc int DEFAULT 1
+-seatprice: int DEFAULT 5
+-standprices: int DEFAULT 5
+-fame: int DEFAULT 2000
+-created: timestamp</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>642</x>
+      <y>228</y>
+      <w>60</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+m1=1
+m2=  0..1</panel_attributes>
+    <additional_attributes>48;18;18;60</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>534</x>
+      <y>462</y>
+      <w>162</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Club_expenses&gt;&gt;
+--
+-id: Serial Primary Key
+-amount: int NOT NULL
+-type: int REFERENCES finance_types(id)
+-date: timestamp
+-description varchar(256)
+-club_id int REFERENCES clubs(id)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>582</x>
+      <y>420</y>
+      <w>30</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>18;18;18;42</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>696</x>
+      <y>462</y>
+      <w>162</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Club_incomes&gt;&gt;
+--
+-id: Serial Primary Key
+-amount: int NOT NULL
+-type: int REFERENCES finance_types(id)
+-date: timestamp
+-description varchar(256)
+-club_id int REFERENCES clubs(id)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>702</x>
+      <y>420</y>
+      <w>36</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;18;18;42</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>444</x>
+      <y>318</y>
+      <w>96</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;colors&gt;&gt;
+--
+-id: Serial Primary Key
+-description varchar(20)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>522</x>
+      <y>318</y>
+      <w>42</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>18;18;30;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>372</x>
+      <y>426</y>
+      <w>138</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constructions&gt;&gt;
+
+--
+-id: Serial Primary Key
+-club_id: int REFERENCES clubs(id)
+-type: int NOT NULL
+-price: int NOT NULL
+-start: timestamp
+-finished: timestamp
+-terraces: int
+-seats: int
+-status: int DEFAULT 0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>432</x>
+      <y>384</y>
+      <w>132</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120;18;18;42</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>858</x>
+      <y>270</y>
+      <w>204</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Contracts&gt;&gt;
+
+--
+-id: Serial Primary Key
+-club_id: int REFERENCES clubs(id)
+-person_id: int REFERENCES person(id)
+-startdate: date
+-enddate: date
+-weeklywage: int
+-goalbonus: int
+-assistbonus: int
+-minimiumreleaseclause: int DEFAULT -1
+-role: int REFERENCES contract_roles(id)
+-transferfee: int DEFAULT 0
+-signonfee: int DEFAULT 0
+-acceptedbyclub: boolean DEFAULT false
+-acceptedbyplayer: boolean DEFAULT false
+-dateoffered: timestamp
+-offered: boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>750</x>
+      <y>312</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>18;18;108;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>870</x>
+      <y>462</y>
+      <w>126</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Contract_roles&gt;&gt;
+
+--
+-id: Serial Primary Key
+-rolename: varchar(20) NOT NULL</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>882</x>
+      <y>426</y>
+      <w>30</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;--
+m1=  1</panel_attributes>
+    <additional_attributes>18;36;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>630</x>
+      <y>552</y>
+      <w>144</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Finance_types&gt;&gt;
+
+--
+-id: Serial Primary Key
+-description: varchar(256) NOT NULL</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>636</x>
+      <y>522</y>
+      <w>30</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=  1</panel_attributes>
+    <additional_attributes>18;30;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>732</x>
+      <y>522</y>
+      <w>30</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=  1</panel_attributes>
+    <additional_attributes>18;30;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>348</x>
+      <y>234</y>
+      <w>162</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Friendly_inv&gt;&gt;
+
+--
+-id: Serial Primary Key
+-invfrom: int REFERENCES clubs(id)
+-invto: int REFERENCES clubs(id)
+-stadiumid: int REFERENCES stadiums(id)
+-matchdate: timestamp NOT NULL
+-status: int DEFAULT 0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>492</x>
+      <y>270</y>
+      <w>72</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=2
+m2=0..*
+</panel_attributes>
+    <additional_attributes>60;30;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>180</x>
+      <y>402</y>
+      <w>144</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Leagues&gt;&gt;
+
+--
+-id: Serial Primary Key
+-leaguename: varchar(50) NOT NULL
+-leaguereputation: int DEFAULT 1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>306</x>
+      <y>366</y>
+      <w>258</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-&gt;
+m1=0..*
+m2=1</panel_attributes>
+    <additional_attributes>246;18;18;60</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>174</x>
+      <y>870</y>
+      <w>144</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Match_lineups&gt;&gt;
+
+--
+-id: Serial Primary Key
+-club_id: int REFERENCES clubs(id)
+-pl1id: int
+-pl2id: int
+...
+pl18id: int
+pos1: varchar(10)
+pos2: varchar(10)
+..
+pos11: varchar(10)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>498</x>
+      <y>420</y>
+      <w>66</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>54;18;24;36;18;126</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>450</x>
+      <y>546</y>
+      <w>138</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Lineups&gt;&gt;
+
+--
+-id: Serial Primary Key
+-club_id: int REFERENCES clubs(id)
+-pl1id: int
+-pl2id: int
+...
+pl18id: int
+pos1: varchar(10)
+pos2: varchar(10)
+..
+pos11: varchar(10)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>174</x>
+      <y>684</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Livematches&gt;&gt;
+
+--
+-id: Serial Primary Key
+-frame: text
+-match_id: int NOT NULL</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>306</x>
+      <y>684</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Logs&gt;&gt;
+
+--
+-id: Serial Primary Key
+-dt: timestamp
+-msg: varchar(4096)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>948</x>
+      <y>84</y>
+      <w>144</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;User_info&gt;&gt;
+
+--
+-id: Serial Primary Key
+-user_id: int REFERENCES users(id)
+-userpoints: int DEFAULT 100</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>984</x>
+      <y>0</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Traits&gt;&gt;
+
+--
+-id: Serial Primary Key
+-name: varchar(256)
+-description: varchar(1024)
+-userpoints: int DEFAULT 100</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>174</x>
+      <y>744</y>
+      <w>144</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Teamtactics&gt;&gt;
+
+--
+-id: Serial Primary Key
+-clubd_id: int REFERENCES clubs(id)
+-captain: int
+-throwinright: int
+-throwinleft: int
+-penaltytaker: int
+-freekickshort: int
+-freekicklong: int
+-cornerright: int
+-conrerleft: int
+-targetman: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>324</x>
+      <y>744</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Status&gt;&gt;
+
+--
+-id: Serial Primary Key
+-lastfixturecheck: timestamp
+-statusnext: varchar(1024)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>324</x>
+      <y>804</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Seasons&gt;&gt;
+
+--
+-id: Serial Primary Key
+-number: int
+-firstday: timestamp
+-lastday: timestamp</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>684</y>
+      <w>162</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Person_trait&gt;&gt;
+
+--
+-id: Serial Primary Key
+-person_id_ int REFERENCES persons(id)
+-trait_id: int REFERENCES traits(id)
+-date: timestamp</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1176</x>
+      <y>96</y>
+      <w>150</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Persons&gt;&gt;
+
+--
+-id: Serial Primary Key
+-user_id: int REFERENCES users(id)
+-firstname: varchar(20)
+-lastname: varchar(20)
+-age: int DEFAULT 15
+-acceleration: real DEFAULT 15
+-topspeed: real DEFAULT 15
+-dribbling: real DEFAULT 15
+-marking: real DEFAULT 15
+-energy: real DEFAULT 100
+-strength: real DEFAULT 15
+-tackling: real DEFAULT 15
+-agility: real DEFAULT 15
+-reaction: real DEFAULT 15
+-handling: real DEFAULT 15
+-shooting: real DEFAULT 15
+-shotpower: real DEFAULT 15
+-passing: real DEFAULT 15
+-technique: real DEFAULT 15
+-height: real DEFAULT 180
+-jumping: real DEFAULT 15
+-stamina: real DEFAULT 15
+-shirtnumber: real
+-heading: real DEFAULT 15
+-money: bigint DEFAULT 0
+-retired: boolean DEFAULT false
+-playerpoints: real DEFAULT 100
+-npc: boolean DEFAULT false
+-created timestamp DEFAULT (now())
+-commandofarea: real DEFAULT 15
+-shotstopping: real DEFAULT 15
+-rushingout: real DEFAULT 15</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>744</y>
+      <w>162</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Matchstats&gt;&gt;
+
+--
+-id: Serial Primary Key
+-match_id: int REFERENCES matches(id)
+-club_id: int REFERENCES clubs(id)
+-shots: int
+-ontarget: int
+-possession: int
+-corners: int
+-freekicks: int
+-throwins: int
+-fouls: int
+-offsides: int
+-yellowcards: int
+-redcards: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>456</x>
+      <y>834</y>
+      <w>174</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Match_playertactics&gt;&gt;
+
+--
+-id: Serial Primary Key
+-person_id: int REFERENCES persons(id)
+-dribble: int DEFAULT 50
+-throughballs: int DEFAULT 50
+-runs: int DEFAULT 50
+-longshots: int DEFAULT 50
+-aggression: int DEFAULT 50
+-mentaliey: int DEFAULT 50
+-closingdown: int DEFAULT 50
+-crossball: int DEFAULT 50
+-tightmarking: int DEFAULT 50
+-passing: int DEFAULT 50
+-forwardonsetpieces: boolean DEFAULT false</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>456</x>
+      <y>684</y>
+      <w>174</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Playertactics&gt;&gt;
+
+--
+-id: Serial Primary Key
+-person_id: int REFERENCES persons(id)
+-dribble: int DEFAULT 50
+-throughballs: int DEFAULT 50
+-runs: int DEFAULT 50
+-longshots: int DEFAULT 50
+-aggression: int DEFAULT 50
+-mentaliey: int DEFAULT 50
+-closingdown: int DEFAULT 50
+-crossball: int DEFAULT 50
+-tightmarking: int DEFAULT 50
+-passing: int DEFAULT 50
+-forwardonsetpieces: boolean DEFAULT false</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>894</y>
+      <w>162</w>
+      <h>222</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Match_playerstats&gt;&gt;
+
+--
+-id: Serial Primary Key
+-match_id: int REFERENCES matches(id)
+-person_id: int REFERENCES persons(id)
+-passattempts: int
+-passessucceeded: int
+-dribbles: int
+-dribbleslost: int
+-tackles: int
+-successfultackles: int
+-shots: int
+-shotsontarget: int
+-goals: int
+-assists: int
+-crosses: int
+-headers: int
+-clearances: int
+-metersrun: int
+-freekickscom: int
+-saveattempts: int
+-saves: int
+-rating: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>174</x>
+      <y>990</y>
+      <w>162</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Matches&gt;&gt;
+
+--
+-id: Serial Primary Key
+-status: int
+-hometeamid: int REFERENCES clubs(id)
+-awayteamid: int REFERENCES clubs(id)
+-matchdate: timestamp
+-stadium_id: int
+-hometeamgoals: int
+-awayteamgoals: int
+-league_id: int
+-attendance: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>456</x>
+      <y>990</y>
+      <w>156</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Manager_commands&gt;&gt;
+
+--
+-id: Serial Primary Key
+-match_id: int REFERENCES matches(id)
+-created: timestamp
+-command: varchar(1024)
+-status: int
+-statusmsg: varchar(1024)
+-matchtimeused: varchar(1024)
+-user_id: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>324</x>
+      <y>864</y>
+      <w>108</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Stadiums&gt;&gt;
+
+--
+-id: Serial Primary Key
+-stadiumname: varchar(50)
+-seats: int
+-terraces: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

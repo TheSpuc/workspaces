@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Attributes</title>
+	<h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+<h:body>
+	<h:form prependId="false">
+		{test.ok}: #{test.ok}
+		<br/>
+		<h:outputText value="rendered" rendered="#{test.ok}"/>
+		<br/>
+		<h:outputText value="styleClass" styleClass="#{test.ok}"/>
+		<br/>
+		<h:inputText value="disabled" disabled="#{test.ok}"/>
+		<br/>
+		<h:inputText value="readonly" readonly="#{test.ok}"/>
+		<br/>
+		<h:inputText value="required" required="#{test.ok}"/>
+		<br/>
+		<h:inputText value="prependId" id="testId"/>
+		<br/>
+		<h:commandButton value="Change" title="Change ok value"
+			action="#{test.changeOk}"/>
+		<br/>
+		<h:inputText value="#{test.tekst1}" onclick="submit()"/>
+		&rarr; #{test.tekst1}
+		<br/>
+	</h:form>
+</h:body>
+</html>
