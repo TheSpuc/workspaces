@@ -3,9 +3,8 @@ package testSuite;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-
-import unitTest.PlayerMoraleTest;
-import unitTest.TrainingRegimeTest;
+import data.PlayerMoraleTest;
+import data.TrainingRegimeTest;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
