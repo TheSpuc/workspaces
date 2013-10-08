@@ -45,6 +45,10 @@ public class Service {
         users.put(u.getName(), u);
     }
     
+    public void createUser(User u){
+        addUser(u);
+    }
+    
     public Map<String, User> getUsers(){
         return new HashMap<>(users);
     }

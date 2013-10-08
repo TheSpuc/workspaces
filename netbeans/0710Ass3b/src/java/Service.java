@@ -14,44 +14,46 @@ import javax.inject.Named;
 @Named(value="service")
 public class Service {
     
-    private Map<String, User> users;
+    private List<User> users;
     
     public Service(){
-        users = new HashMap<>();
+        users = new ArrayList<>();
         User u1 = new User("Liv", "liv123",0, "admin",false);
         User u2 = new User("Julie", "julie123",1, "user", false);
         User u3 = new User("Nick", "nick123",2, "admin",false);
         User u4 = new User("Mark", "mark123",3, "user", false);
         
-        users.put("Liv", u1);
-        users.put("Julie", u2);
-        users.put("Nick", u3);
-        users.put("Mark", u4);
+        users.add(u1);
+        users.add(u2);
+        users.add(u3);
+        users.add(u4);
         
     }
     
     public boolean containsUser(String name, String pass){
-        boolean result = false;
-        User temp = users.get(name);
-        if(temp != null){
-            if(temp.getPassword().equals(pass)){
-                result = true;
+        boolean found = false;
+        int i = 0;
+        while(i<users.size() && !found){
+            if(users.get(i).getPassword().equals(pass)){
+                found = true;
             }
+            i++;
         }
-        return result;
+        return found;
     }
     
     public void addUser(User u){
-        users.put(u.getName(), u);
+        users.add(u);
     }
     
-    public Map<String, User> getUsers(){
-        return new HashMap<>(users);
+    public List<User> getUsers(){
+        System.out.println("DAAAA FUKKKKKKKKKKK");
+        return new ArrayList<>(users);
     }
     
     public List<User> listUsers(){
         List<User> result = new ArrayList<>();
-        for(User entry : users.values()){
+        for(User entry : users){
             result.add(entry);
         }
         return result;
@@ -59,8 +61,16 @@ public class Service {
     
     public boolean isAdmin(String name){
         boolean result = false;
-        if(users.get(name).getUserPri().equals("admin")){
-            result = true;
+        boolean found = false;
+        int i = 0;
+        while(i < users.size() && !found){
+            if(users.get(i).getName().equals(name)){
+                found = true;
+                if(users.get(i).getUserPri().equals("admin")){
+                    result = true;
+                }
+            }
+            i++;
         }
         return result;
     }
@@ -73,7 +83,7 @@ public class Service {
     
     public void deleteUser(User u, User loggedInUser){
         if(!u.getName().equals(loggedInUser.getName())){
-            users.remove(u.getName());
+            users.remove(u);
         }
     }
 }

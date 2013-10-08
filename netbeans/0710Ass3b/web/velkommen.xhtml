@@ -25,7 +25,7 @@
             <p:selectBooleanCheckbox value="#{userBean.showInfo}" />
         </h:form>
         <h:form prependId ="false" rendered="#{userBean.showAdminInfo}">
-            <p:dataTable value="#{service.listUsers()}" var="entry">
+            <p:dataTable value="#{service.users}" var="entry">
                 <p:column sortBy="name" headerText="Name">
                    <h:outputText value="#{entry.name}" />
                 </p:column>

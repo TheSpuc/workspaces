@@ -86,6 +86,11 @@ public class UserBean implements Serializable {
         return null;
     }
     
+    public String createUser(){
+        service.createUser(user);
+        return "welcome";
+    }
+    
     private void invalidateLogout(){
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         session.invalidate();
