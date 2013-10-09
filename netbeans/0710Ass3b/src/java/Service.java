@@ -48,7 +48,8 @@ public class Service {
     
     public List<User> getUsers(){
         System.out.println("DAAAA FUKKKKKKKKKKK");
-        return new ArrayList<>(users);
+//        return new ArrayList<>(users);
+        return users;
     }
     
     public List<User> listUsers(){
