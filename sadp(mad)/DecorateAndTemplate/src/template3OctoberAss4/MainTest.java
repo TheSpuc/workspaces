@@ -12,7 +12,7 @@ public class MainTest {
 		s1.add(h2);
 		Hold h3 = new Hold(Hold.Ugedag.TORSDAG, "fodbold");
 		s1.add(h3);
-		Hold h4 = new Hold(Hold.Ugedag.TORSDAG, "Håndbold");
+		Hold h4 = new Hold(Hold.Ugedag.TORSDAG, "Hï¿½ndbold");
 		s1.add(h4);
 
 		Iterator<Hold> it1 = s1.iterator();
@@ -38,22 +38,22 @@ public class MainTest {
 
 		
 		//Ass 4.3
-		FindAllHold<Hold> ft = new FindAllHold<>(s1, s2);
-		Sekvens<Hold> result = ft.findAll();
-		Iterator<Hold> it3 = result.iterator();
-		while(it3.hasNext()){
-			System.out.println(it3.next());
-		}
+//		FindAllHold<Hold> ft = new FindAllHold<>(s1, s2);
+//		Sekvens<Hold> result = ft.findAll();
+//		Iterator<Hold> it3 = result.iterator();
+//		while(it3.hasNext()){
+//			System.out.println(it3.next());
+//		}
 		
 		
 		System.out.println("\njust in the end of everything again?!\n");
 		
 //		//Ass 4.4
-//		MergeAllHold<Hold> ft1 = new MergeAllHold<>(s1, s2);
-//		Sekvens<Hold>	result1 = ft1.MergeAll();
-//		Iterator<Hold> it4 = result1.iterator();
-//		while(it4.hasNext()){
-//			System.out.println(it4.next());
-//		}
+		MergeAllHold<Hold> ft1 = new MergeAllHold<>(s1, s2);
+		Sekvens<Hold>	result1 = ft1.MergeAll();
+		Iterator<Hold> it4 = result1.iterator();
+		while(it4.hasNext()){
+			System.out.println(it4.next());
+		}
 	}
 }

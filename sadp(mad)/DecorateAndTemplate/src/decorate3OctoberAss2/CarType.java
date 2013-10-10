@@ -10,7 +10,7 @@ public abstract class CarType {
 	
 	public String getDescription(){
 		return description;
-	}
+	}	
 	
 	public abstract int cost();
 }
