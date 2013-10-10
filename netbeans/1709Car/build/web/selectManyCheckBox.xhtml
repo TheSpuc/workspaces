@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>TODO supply a title</title>
+    </head>
+    <body>
+        <h:form>
+            <h:selectManyCheckbox value="#{bean.selectedCars}">
+                <f:selectItems value="#{bean.cars}" var="c"
+                               itemLabel="#{c.regnr}" itemValue="#{c.regnr}"/>
+            </h:selectManyCheckbox>
+            <h:commandButton value="Update" action="#{bean.updateMany()}" />
+        </h:form>
+    </body>
+</html>

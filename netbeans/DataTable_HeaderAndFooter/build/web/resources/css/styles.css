@@ -1,0 +1,22 @@
+.columnHeader {
+	font-style: bold;
+}
+
+.columnFooter {
+	font-size: 0.75em;
+}
+
+.evenColumn {
+	color: red;
+}
+
+.oddRow {
+	height: 40px;
+	text-align: center;
+	background: MediumTurquoise;
+}
+
+.evenRow {
+	text-align: center;
+	background: PowderBlue;
+}
