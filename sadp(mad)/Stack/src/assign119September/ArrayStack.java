@@ -12,6 +12,7 @@ public class ArrayStack<T> implements StackI<T> {
 		this(defaultCapacity);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ArrayStack(int initialCapacity){
 		stack = (T[]) new Object[initialCapacity];
 		top = 0;

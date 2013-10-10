@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ListSekvens implements Sekvens {
+public class ListSekvens<E> implements Sekvens<E> {
 
-	private List<Comparable> list;
+	private List<E> list;
 	
 	public ListSekvens(){
-		list = new ArrayList<Comparable>();
+		list = new ArrayList<E>();
 	}
-	public void add(Comparable obj) {
+	public void add(E obj) {
 		list.add(obj);
 
 	}
 
 
-	public void addAll(Sekvens s) {
-		for (Iterator iterator = s.iterator(); iterator.hasNext();) {
-			Comparable object = (Comparable) iterator.next();
+	public void addAll(Sekvens<E> s) {
+		for (Iterator<E> iterator = s.iterator(); iterator.hasNext();) {
+			E object = iterator.next();
 			list.add(object);
 			
 		}
@@ -27,7 +27,7 @@ public class ListSekvens implements Sekvens {
 	}
 
 
-	public Comparable head() {
+	public E head() {
 		return list.get(0);
 	}
 
@@ -37,7 +37,7 @@ public class ListSekvens implements Sekvens {
 	}
 
 
-	public Iterator iterator() {
+	public Iterator<E> iterator() {
 		return list.iterator();
 	}
 

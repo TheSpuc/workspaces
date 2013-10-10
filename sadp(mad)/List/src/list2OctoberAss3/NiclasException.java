@@ -1,5 +1,6 @@
 package list2OctoberAss3;
 
+@SuppressWarnings("serial")
 public class NiclasException extends RuntimeException {
 	
 	public NiclasException(){

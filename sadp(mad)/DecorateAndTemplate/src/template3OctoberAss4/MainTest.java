@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class MainTest {
 
 	public static void main(String[] args){
-		Sekvens s1 = new ListSekvens();
+		Sekvens<Hold> s1 = new ListSekvens<>();
 		Hold h1 = new Hold(Hold.Ugedag.TIRSDAG, "basketball");
 		s1.add(h1);
 		Hold h2 = new Hold(Hold.Ugedag.TIRSDAG, "volleybold");
@@ -22,7 +22,7 @@ public class MainTest {
 
 		System.out.println("\njust in the middle of everything\n");
 
-		Sekvens s2 = new ListSekvens();
+		Sekvens<Hold> s2 = new ListSekvens<>();
 		Hold h5 = new Hold(Hold.Ugedag.TIRSDAG, "basketball");
 		s2.add(h5);
 		Hold h6 = new Hold(Hold.Ugedag.ONSDAG, "floorball");
@@ -38,22 +38,22 @@ public class MainTest {
 
 		
 		//Ass 4.3
-//		FindAllHold ft = new FindAllHold(s1, s2);
-//		Sekvens	result = ft.findAll();
-//		Iterator<Hold> it3 = result.iterator();
-//		while(it3.hasNext()){
-//			System.out.println(it3.next());
-//		}
+		FindAllHold<Hold> ft = new FindAllHold<>(s1, s2);
+		Sekvens<Hold> result = ft.findAll();
+		Iterator<Hold> it3 = result.iterator();
+		while(it3.hasNext()){
+			System.out.println(it3.next());
+		}
 		
 		
 		System.out.println("\njust in the end of everything again?!\n");
 		
-		//Ass 4.4
-		MergeAllHold ft1 = new MergeAllHold(s1, s2);
-		Sekvens	result1 = ft1.MergeAll();
-		Iterator<Hold> it4 = result1.iterator();
-		while(it4.hasNext()){
-			System.out.println(it4.next());
-		}
+//		//Ass 4.4
+//		MergeAllHold<Hold> ft1 = new MergeAllHold<>(s1, s2);
+//		Sekvens<Hold>	result1 = ft1.MergeAll();
+//		Iterator<Hold> it4 = result1.iterator();
+//		while(it4.hasNext()){
+//			System.out.println(it4.next());
+//		}
 	}
 }

@@ -1,14 +1,14 @@
 package template3OctoberAss4;
 
-public abstract class FletteTemplate {
-	protected Sekvens g;
+public abstract class FletteTemplate<E extends Comparable<E>> {
+	protected Sekvens<E> g;
 
 	// Template method med fletteskabelonen
 	// Pre: s1 og s2 er sorteret i ikke aftagende orden
-	// g er en tom sekvens
-	// Post: g sorteret sekvens indeholdende resultatet af
+	// g er en tom Sekvens<E>
+	// Post: g sorteret Sekvens<E> indeholdende resultatet af
 	// fletningen af s1 og s2
-	public final Sekvens flette(Sekvens s1, Sekvens s2, Sekvens g) {
+	public final Sekvens<E> flette(Sekvens<E> s1, Sekvens<E> s2, Sekvens<E> g) {
 		this.g = g;
 		while (!s1.isEmpty() && !s2.isEmpty()) {
 			if ((s1.head()).compareTo(s2.head()) < 0) {
@@ -29,19 +29,19 @@ public abstract class FletteTemplate {
 
 	// Primitive metoder der kaldes fra Template Method og
 	// overskrives i subklasser
-	protected void flyt1(Sekvens s) {
+	protected void flyt1(Sekvens<E> s) {
 	}
 
-	protected void flyt2(Sekvens s) {
+	protected void flyt2(Sekvens<E> s) {
 	}
 
-	protected void flyt3(Sekvens s1, Sekvens s2) {
+	protected void flyt3(Sekvens<E> s1, Sekvens<E> s2) {
 	}
 
-	protected void flytHale1(Sekvens s) {
+	protected void flytHale1(Sekvens<E> s) {
 	}
 
-	protected void flytHale2(Sekvens s) {
+	protected void flytHale2(Sekvens<E> s) {
 	}
 
 }

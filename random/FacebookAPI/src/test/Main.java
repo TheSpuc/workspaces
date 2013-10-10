@@ -8,7 +8,6 @@ import java.util.Map;
 import com.restfb.DefaultFacebookClient;
 import com.restfb.Facebook;
 import com.restfb.FacebookClient;
-import com.restfb.FacebookClient.AccessToken;
 
 public class Main {
 

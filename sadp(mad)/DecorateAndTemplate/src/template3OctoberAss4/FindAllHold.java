@@ -1,33 +1,33 @@
 package template3OctoberAss4;
 
-public class FindAllHold extends FletteTemplate {
+public class FindAllHold<E extends Comparable<E>> extends FletteTemplate<E> {
 	
-	private Sekvens a;
-	private Sekvens b;
+	private Sekvens<E> a;
+	private Sekvens<E> b;
 	
-	public FindAllHold(Sekvens a, Sekvens b){
+	public FindAllHold(Sekvens<E> a, Sekvens<E> b){
 		this.a = a;
 		this.b = b;
 	}
 	
-	public Sekvens findAll(){
-		return flette(a, b, new ListSekvens());
+	public Sekvens<E> findAll(){
+		return flette(a, b, new ListSekvens<E>());
 	}
 	
 	@Override
-	protected void flyt1(Sekvens s) {
+	protected void flyt1(Sekvens<E> s) {
 		g.add(s.head());
 		s.tail();
 	}
 	
 	@Override
-	protected void flyt2(Sekvens s) {
+	protected void flyt2(Sekvens<E> s) {
 		g.add(s.head());
 		s.tail();
 	}
 
 	@Override
-	protected void flyt3(Sekvens s1, Sekvens s2) {
+	protected void flyt3(Sekvens<E> s1, Sekvens<E> s2) {
 		g.add(s1.head());
 		g.add(s2.head());
 		s1.tail();
@@ -35,13 +35,13 @@ public class FindAllHold extends FletteTemplate {
 	}
 
 	@Override
-	protected void flytHale1(Sekvens s) {
+	protected void flytHale1(Sekvens<E> s) {
 		g.add(s.head());
 		s.tail();
 	}
 
 	@Override
-	protected void flytHale2(Sekvens s) {
+	protected void flytHale2(Sekvens<E> s) {
 		g.add(s.head());
 		s.tail();
 	}
