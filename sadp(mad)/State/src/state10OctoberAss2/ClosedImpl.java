@@ -10,20 +10,20 @@ public class ClosedImpl implements StateInterface {
 	
 	@Override
 	public void click() {
-		// TODO Auto-generated method stub
-		
+		door.setState(new OpeningImple(door));
 	}
 
 	@Override
 	public void complete() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void timeout() {
-		// TODO Auto-generated method stub
-		
+	}
+	
+	@Override
+	public String toString(){
+		return "Closed";
 	}
 
 }

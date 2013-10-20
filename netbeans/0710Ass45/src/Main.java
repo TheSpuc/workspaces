@@ -1,6 +1,5 @@
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +16,7 @@ import java.util.regex.Pattern;
 public class Main {
     
     public static void main(String[] args) throws Exception{
-        userName();
+        allInfo();
     }
     
     public static void userName() throws Exception{
@@ -46,13 +45,12 @@ public class Main {
                 Matcher m = pattern.matcher(s.trim());
                 while(m.find()){
                     String email = m.group();
-                    System.out.println(s.subSequence(0, s.indexOf("(")));
-                    System.out.println(email);
+                    System.out.print("Name: " + s.subSequence(0, s.indexOf(("("))-1) + ", email: ");
+                    System.out.print(email);
+                    System.out.println("\n");
                 }
                 
             }
-            
-            
         }
     }
 }

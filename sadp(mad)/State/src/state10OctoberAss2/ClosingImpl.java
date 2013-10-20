@@ -1,29 +1,45 @@
 package state10OctoberAss2;
 
-public class ClosingImpl implements StateInterface {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
+
+public class ClosingImpl implements StateInterface, ActionListener {
 
 	private Door door;
+	Timer t;
 
 	public ClosingImpl(Door door){
 		this.door = door;
+		t = new Timer(4000, this);
+		t.start();
 	}
 	
 	@Override
 	public void click() {
-		// TODO Auto-generated method stub
-		
+		t.stop();
+		door.setState(new OpeningImple(door));
 	}
 
 	@Override
 	public void complete() {
-		// TODO Auto-generated method stub
-		
+		door.setState(new ClosedImpl(door));
 	}
 
 	@Override
 	public void timeout() {
-		// TODO Auto-generated method stub
-		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		t.stop();
+		complete();
+	}
+	
+	@Override
+	public String toString(){
+		return "Closing";
 	}
 
 }
