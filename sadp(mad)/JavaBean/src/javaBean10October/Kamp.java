@@ -2,10 +2,11 @@ package javaBean10October;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Kamp {
+public class Kamp implements Serializable {
 	
 	private char raekke;
 	private int nr;
@@ -94,8 +95,9 @@ public class Kamp {
 			listeners = new ArrayList<>(eliteListener);
 		}
 		
+		EliteVinderEvent temp = new EliteVinderEvent(this);
 		for(EliteVinderListener l : listeners){
-			l.eliteVinder(new EliteVinderEvent(this));
+			l.eliteVinder(temp);
 		}
 	}
 	
