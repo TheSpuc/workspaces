@@ -8,9 +8,11 @@ package beans;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,7 +47,7 @@ public class PostNum implements Serializable {
     }
     
     private void addToDic() throws FileNotFoundException, IOException{
-        BufferedReader in = new BufferedReader(new FileReader(new File("/Users/mmb/Dropbox/workspace/netbeans/2210Ass3/src/java/beans/Postnummer.txt")));
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(new File("C:\\Users\\Mark\\Dropbox\\workspace\\netbeans\\2210Ass3\\src\\java\\beans\\Postnummer.txt")), "utf-8"));
         
         String line;
         while((line = in.readLine()) != null){

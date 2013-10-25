@@ -13,8 +13,8 @@ public interface FigureComponent {
 	
 	public FigureComponent getChild(int i);
 	
-	public abstract int getAround();
+	public int getAround();
 	
-	public abstract void draw();
+	public void draw();
 
 }

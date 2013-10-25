@@ -56,7 +56,9 @@ public class FigureComposite implements FigureComponent {
 
 	@Override
 	public void draw() {
+		System.out.println("--------------");
 		System.out.println(name);
+		System.out.println("--------------");
 		
 		Iterator<FigureComponent> it = composites.iterator();
 		while(it.hasNext()){
