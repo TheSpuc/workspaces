@@ -1,2 +1,2 @@
-workspaces
+Workspaces for all computer science
 ===
