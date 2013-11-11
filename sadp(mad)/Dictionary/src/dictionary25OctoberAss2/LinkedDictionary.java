@@ -17,7 +17,7 @@ public class LinkedDictionary<K, V> implements Dictionary<K, V> {
 		Node temp = head;
 		boolean found = false;
 		while(!found && temp.next != null){
-			if(temp.next.key == key){
+			if(temp.next.key.equals(key)){
 				found = true;
 			}else temp = temp.next;
 		}
@@ -35,7 +35,25 @@ public class LinkedDictionary<K, V> implements Dictionary<K, V> {
 		n.key = key;
 		n.value = value;
 		
-		return null;
+		Node runNode = head;
+		boolean found = false;
+		V result = null;
+		while(!found && runNode.next != null){
+			if(runNode.next.key == key){
+				Node temp = runNode.next;
+				runNode.next = n;
+				n.next = temp.next;
+				temp.next = null;
+				result = temp.value;
+				found = true;
+			}else runNode = runNode.next;
+		}
+		if(!found){
+			n.next = head.next;
+			head.next = n;
+			size++;
+		}
+		return result;
 	}
 
 	@Override
@@ -44,7 +62,7 @@ public class LinkedDictionary<K, V> implements Dictionary<K, V> {
 		boolean found = false;
 		V result = null;
 		while(!found && temp.next != null){
-			if(temp.next.key == key){
+			if(temp.next.key.equals(key)){
 				found = true;
 				result = temp.next.value;
 				temp.next = temp.next.next;

@@ -42,7 +42,7 @@ public class ArrayDictionary<K, V> implements Dictionary<K, V>{
 		int index = 0;
 		boolean found = false;
 		while(!found && index<size){
-			if(entries[index].key == key){
+			if(entries[index].key.equals(key)){
 				Entry<K, V> temp = entries[index];
 				entries[index] = entry;
 				entry = temp;
@@ -65,20 +65,19 @@ public class ArrayDictionary<K, V> implements Dictionary<K, V>{
 
 	@Override
 	public V remove(K key) {
-		Entry<K, V> en = null;
+		V value = null;
 		int index = 0;
 		boolean found = false;
 		while(index < size && !found){
-			if(entries[index].key == key){
-				en = entries[index];
+			if(entries[index].key.equals(key)){
+				value = entries[index].value;
+				entries[index] = entries[size-1];
+				entries[size] = null;
 				found = true;
-				entries[index] = entries[size];
 				size--;
 			}else index++;
 		}
-		if(found){
-			return en.value;
-		}else return null;
+		return value;
 	}
 
 	@Override
