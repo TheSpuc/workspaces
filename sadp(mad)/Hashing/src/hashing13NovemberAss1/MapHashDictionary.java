@@ -12,6 +12,7 @@ public class MapHashDictionary<K, V> implements Dictionary<K, V> {
 	/**
 	 * HashingMap constructor comment.
 	 */
+	@SuppressWarnings("unchecked")
 	public MapHashDictionary() {
 		tabel = new java.util.HashMap[N];
 		for (int i = 0; i < N; i++)

@@ -11,6 +11,7 @@ public class ArrayListDictionary<K, V> implements Dictionary<K, V> {
 	private static int N = 10;
 	private int nrOfEntries;
 	
+	@SuppressWarnings("unchecked")
 	public ArrayListDictionary(){
 		nrOfEntries = 0;
 		group = new ArrayList[N];
