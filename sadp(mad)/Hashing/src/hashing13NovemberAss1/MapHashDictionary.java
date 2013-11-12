@@ -1,7 +1,9 @@
 package hashing13NovemberAss1;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class MapHashDictionary<K, V> implements Dictionary<K, V> {
@@ -76,7 +78,7 @@ public class MapHashDictionary<K, V> implements Dictionary<K, V> {
 
 	public Iterator<V> values() {
 		int i = 0;
-		Set<V> values = new HashSet<>();
+		List<V> values = new ArrayList<>();
 		while(i < N){
 			java.util.Map<K, V> map = tabel[i];
 			values.addAll(map.values());

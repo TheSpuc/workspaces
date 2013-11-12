@@ -1,8 +1,10 @@
 package hashing13NovemberAss1;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class ArrayListDictionary<K, V> implements Dictionary<K, V> {
 	
@@ -92,7 +94,7 @@ public class ArrayListDictionary<K, V> implements Dictionary<K, V> {
 	@Override
 	public Iterator<K> keys() {
 		int i = 0;
-		List<K> keys = new ArrayList<>();
+		Set<K> keys = new HashSet<>();
 		while(i < N){
 			List<Entry> entry = group[i];
 			for(Entry e : entry){
