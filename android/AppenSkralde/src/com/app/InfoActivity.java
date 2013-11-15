@@ -23,12 +23,4 @@ public class InfoActivity extends Activity {
 		startActivity(new Intent(this, MainActivity.class));
 		finish();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.info, menu);
-		return true;
-	}
-
 }
