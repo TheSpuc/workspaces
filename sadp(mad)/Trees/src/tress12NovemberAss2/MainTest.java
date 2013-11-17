@@ -67,6 +67,7 @@ public class MainTest<T> {
 		while(it2.hasNext()){
 			System.out.println("Next Node " + it2.next());
 		}
+		System.out.println("/Breadth first");
 
 	}
 
