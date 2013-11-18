@@ -25,7 +25,13 @@ public class TestDictionary {
 //		System.out.println(map.size());
 //		
 //		System.out.println(map.put(8,"Ida"));
-		
+//		map2.put(9, "stefan");
+//		map2.put(10, "mark");
+//		map2.put(11, "egon");
+//		map2.put(12, "jonas");
+//		map2.put(13, "emil");
+//		map2.put(14, "christian");
+//		map2.put(15, "nick");
 		
 		Dictionary<Integer, String> map2 = new ArrayListDictionary<>();
 		System.out.println(map2.isEmpty());
@@ -47,5 +53,12 @@ public class TestDictionary {
 		System.out.println(map2.size());
 		
 		System.out.println(map2.put(8,"Ida"));
+		map2.put(9, "stefan");
+		map2.put(10, "mark");
+		map2.put(11, "egon");
+		map2.put(12, "jonas");
+		map2.put(13, "emil");
+		map2.put(14, "christian");
+		map2.put(15, "nick");
 	}
 }

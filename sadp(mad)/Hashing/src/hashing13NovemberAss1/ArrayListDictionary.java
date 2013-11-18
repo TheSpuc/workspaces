@@ -7,12 +7,13 @@ import java.util.List;
 import java.util.Set;
 
 public class ArrayListDictionary<K, V> implements Dictionary<K, V> {
-	
-	
+
+
 	private List<Entry>[] group;
-	private static int N = 10;
+	private static int N = 7;
 	private int nrOfEntries;
-	
+	private double loadfactor;
+
 	@SuppressWarnings("unchecked")
 	public ArrayListDictionary(){
 		nrOfEntries = 0;
@@ -20,8 +21,9 @@ public class ArrayListDictionary<K, V> implements Dictionary<K, V> {
 		for(int i=0; i<N; i++){
 			group[i] = new ArrayList<Entry>();
 		}
+		loadfactor = 0.75f;
 	}
-	
+
 	@Override
 	public V get(K key) {
 		int i = key.hashCode() % N;
@@ -50,7 +52,7 @@ public class ArrayListDictionary<K, V> implements Dictionary<K, V> {
 		Entry in = new Entry();
 		in.key = key;
 		in.value = value;
-		
+
 		List<Entry> list = group[i];
 		boolean found = false;
 		int index = 0;
@@ -64,8 +66,48 @@ public class ArrayListDictionary<K, V> implements Dictionary<K, V> {
 		if(!found){
 			list.add(in);
 			nrOfEntries++;
+			if(nrOfEntries/N > loadfactor){
+				rehash();
+			}
 		}
 		return result;
+	}
+	
+	private void rehash(){
+		int size = findNextPrime();
+		@SuppressWarnings("unchecked")
+		List<Entry>[] newGroup = new ArrayList[size];
+		for(int i=0; i<size; i++){
+			newGroup[i] = new ArrayList<Entry>();
+		}
+
+		List<Entry>[] tempGroup = group;
+		N = size;
+		group = newGroup;
+		for(List<Entry> l : tempGroup){
+			for(Entry e : l){
+				int hashCode = e.key.hashCode() % N;
+				group[hashCode].add(e);
+			}
+		}
+	}
+
+	private int findNextPrime(){
+		int primeIndex = N*2;
+		boolean prime = false;
+		while(!prime){
+			int index = 2;	
+			boolean isPrime = true;
+			while(index<N && isPrime){
+				if(primeIndex % index == 0){
+					isPrime = false;
+				}else index++;
+			}
+			if(!isPrime){
+				primeIndex++;
+			}else prime = true;
+		}
+		return primeIndex;
 	}
 
 	@Override
@@ -116,7 +158,7 @@ public class ArrayListDictionary<K, V> implements Dictionary<K, V> {
 		}
 		return values.iterator();
 	}
-	
+
 	private class Entry{
 		K key;
 		V value;
