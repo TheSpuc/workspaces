@@ -39,8 +39,8 @@ public class Bean implements Serializable {
 	public Bean() {
 		user = new User("", "", 0);
 		isAdmin = false;
-		service = new Service();
-		service.createObjects();
+//		service = new Service();
+//		service.createObjects();
 		category = new Category("null");
 		selectedPost = null;
 		selectedComment = null;
@@ -98,6 +98,7 @@ public class Bean implements Serializable {
 	public String deleteSpecificPost(Post p){
 		service.postUnset(p);
 		selectedPost = null;
+		selectedComment = null;
 		return null;
 	}
 

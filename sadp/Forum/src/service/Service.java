@@ -14,7 +14,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import model.Category;
@@ -30,11 +29,9 @@ import model.User;
 @ApplicationScoped
 public class Service implements Serializable{
 
-	@Inject
-	private Dao dao;
+	private Dao dao = Dao.getInstance(); 
 
 	public Service(){
-		dao = new Dao();
 	}
 
 	public User createUser(String name, String password){

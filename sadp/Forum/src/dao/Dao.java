@@ -5,12 +5,8 @@
  */
 package dao;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
 
 import model.Category;
 import model.Comment;
@@ -21,14 +17,24 @@ import model.User;
  *
  * @author Mark
  */
-@Named(value="dao")
-@ApplicationScoped
-public class Dao implements Serializable {
+public class Dao {
 
 	private static List<Comment> comments = new ArrayList<>();
 	private static List<User> users = new ArrayList<>();
 	private static List<Category> categories = new ArrayList<>();
 	private static List<Post> posts = new ArrayList<>();
+	
+	private static Dao dao;
+	
+	private Dao(){
+	}
+	
+	public static Dao getInstance(){
+		if(dao == null){
+			dao = new Dao();
+		}
+		return dao;
+	}
 
 	public Comment addComment(Comment c) {
 		comments.add(c);
