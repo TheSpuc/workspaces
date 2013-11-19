@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:Book xmlns:p="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.w3schools.com BookSchema.xsd ">
+	<p:Chapter>
+		<p:title>p:title</p:title>
+		<p:Section>
+			<p:title>p:title</p:title>
+		</p:Section>
+	</p:Chapter>
+	<p:Chapter>
+		<p:title></p:title>
+		<p:Section>
+			<p:title></p:title>
+		</p:Section>
+	</p:Chapter>
+</p:Book>
