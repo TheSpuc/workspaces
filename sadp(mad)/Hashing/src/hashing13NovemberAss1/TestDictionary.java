@@ -1,6 +1,8 @@
 
 package hashing13NovemberAss1;
 
+import java.util.Iterator;
+
 
 public class TestDictionary {
 
@@ -25,13 +27,18 @@ public class TestDictionary {
 //		System.out.println(map.size());
 //		
 //		System.out.println(map.put(8,"Ida"));
-//		map2.put(9, "stefan");
-//		map2.put(10, "mark");
-//		map2.put(11, "egon");
-//		map2.put(12, "jonas");
-//		map2.put(13, "emil");
-//		map2.put(14, "christian");
-//		map2.put(15, "nick");
+//		map.put(9, "stefan");
+//		map.put(10, "mark");
+//		map.put(11, "egon");
+//		map.put(12, "jonas");
+//		map.put(13, "emil");
+//		map.put(14, "christian");
+//		map.put(15, "nick");
+//		
+//		Iterator<String> it = map.values();
+//		while(it.hasNext()){
+//			System.out.println(it.next());
+//		}
 		
 		Dictionary<Integer, String> map2 = new ArrayListDictionary<>();
 		System.out.println(map2.isEmpty());
@@ -60,5 +67,10 @@ public class TestDictionary {
 		map2.put(13, "emil");
 		map2.put(14, "christian");
 		map2.put(15, "nick");
+		
+		Iterator<String> it2 = map2.values();
+		while(it2.hasNext()){
+			System.out.println(it2.next());
+		}
 	}
 }
