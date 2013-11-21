@@ -14,18 +14,18 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	private BinaryNode root;
 
 	/**
-	 * Returnerer antallet af knuder i det binære træ.
+	 * Returnerer antallet af knuder i det binï¿½re trï¿½.
 	 * 
-	 * @return antallet af knuder i træet
+	 * @return antallet af knuder i trï¿½et
 	 */
 	public int size() {
 		return size;
 	}
 
 	/**
-	 * Returnerer om træet er tomt
+	 * Returnerer om trï¿½et er tomt
 	 * 
-	 * @return om træet er tomt
+	 * @return om trï¿½et er tomt
 	 */
 
 	public boolean isEmpty() {
@@ -40,7 +40,7 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	 *            knuden der skal have nyt element
 	 * @param e
 	 *            det nye element
-	 * @return det objekt der oprindelig var på v's plads
+	 * @return det objekt der oprindelig var pï¿½ v's plads
 	 * 
 	 */
 	public E replace(BinaryNodeI<E> v, E e) {
@@ -51,11 +51,11 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	}
 
 	/**
-	 * Returnerer roden af det binære træ.
+	 * Returnerer roden af det binï¿½re trï¿½.
 	 * 
-	 * @return roden til træet
+	 * @return roden til trï¿½et
 	 * @exception java.lang.Exception
-	 *                hvis træet er tomt
+	 *                hvis trï¿½et er tomt
 	 */
 	public BinaryNodeI<E> root() {
 		return root;
@@ -65,19 +65,19 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	 * Returnerer om v er in intern knude.
 	 * 
 	 * @param v
-	 *            knuden der skal afgøres om er intern
+	 *            knuden der skal afgï¿½res om er intern
 	 * @return true hvis v er intern ellers false
 	 */
 	public boolean isInternal(BinaryNodeI<E> v) {
 		BinaryNode node = (BinaryNode)v;
-		return (node.getLeft()!= null) && (node.getRight()!=null);
+		return (node.getLeft()!= null) || (node.getRight()!=null);
 	}
 
 	/**
 	 * Returnerer om v er in ekstern knude.
 	 * 
 	 * @param v
-	 *            knuden der skal afgøres om er ekstern
+	 *            knuden der skal afgï¿½res om er ekstern
 	 * @return true hvis n er ekstern ellers false
 	 */
 	public boolean isExternal(BinaryNodeI<E> v) {
@@ -86,10 +86,10 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	}
 
 	/**
-	 * Returnerer om v er roden i træet.
+	 * Returnerer om v er roden i trï¿½et.
 	 * 
 	 * @param v
-	 *            knuden der skal afgøres om er roden
+	 *            knuden der skal afgï¿½res om er roden
 	 * @return true hvis v er roden ellers false
 	 */
 	public boolean isRoot(BinaryNodeI<E> v) {
@@ -97,11 +97,11 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	}
 
 	/**
-	 * Opretter og returnerer roden i træet med indhold e
+	 * Opretter og returnerer roden i trï¿½et med indhold e
 	 * 
-	 * @return roden til træet
+	 * @return roden til trï¿½et
 	 * @exception hvis
-	 *                træet ikke er tomt
+	 *                trï¿½et ikke er tomt
 	 */
 	public BinaryNodeI<E> addRoot(E e) {
 		root = new BinaryNode(e);
@@ -123,11 +123,11 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	}
 
 	/**
-	 * Returnerer det højre barn til knuden v.
+	 * Returnerer det hï¿½jre barn til knuden v.
 	 * 
 	 * @param v
-	 *            knuden der skal findes højre barn til
-	 * @return det højre barn til knuden v.
+	 *            knuden der skal findes hï¿½jre barn til
+	 * @return det hï¿½jre barn til knuden v.
 	 * @exception hvis
 	 *                det ikke findes
 	 */
@@ -147,7 +147,7 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	}
 
 	/**
-	 * Returnerer om v har et højre barn
+	 * Returnerer om v har et hï¿½jre barn
 	 * 
 	 * @return om v har et venstre barn
 	 */
@@ -175,11 +175,11 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	}
 
 	/**
-	 * Opretter og returnerer en ny knude som højrebarn til v
+	 * Opretter og returnerer en ny knude som hï¿½jrebarn til v
 	 * 
 	 * @return ny knude
 	 * @exception hvis
-	 *                v allerede har et højre barn
+	 *                v allerede har et hï¿½jre barn
 	 */
 	public BinaryNodeI<E> insertRight(BinaryNodeI<E> v, E e) {
 		BinaryNode node = (BinaryNode) v;
@@ -193,12 +193,12 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 	}
 
 	/**
-	 * Returnerer en iterator med indholdet i det binære træ.
+	 * Returnerer en iterator med indholdet i det binï¿½re trï¿½.
 	 * 
-	 * @return iterator over knuderne i det binære træ
+	 * @return iterator over knuderne i det binï¿½re trï¿½
 	 */
 	public Iterator<E> elements() {
-		return new BinaryIterator();
+		return new BinaryIteratorStack();
 	}
 	
 	public Iterator<E> elementsBreadthFirst(){
@@ -207,11 +207,11 @@ public class BinaryTree<E> implements BinaryTreeI<E> {
 
 	
 	//Depth first
-	private class BinaryIterator implements Iterator<E>{
+	private class BinaryIteratorStack implements Iterator<E>{
 
 		private Stack<BinaryNode> nodes;
 
-		public BinaryIterator(){
+		public BinaryIteratorStack(){
 			nodes = new Stack<>();
 			insertIntoStack(root);
 		}
