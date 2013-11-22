@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Welcome</title>
+    </h:head>
+    <h:body>
+        <h1>Welcome to the site #{userBean.user.name} </h1>
+        
+        <h:form prependId="false" rendered="#{userBean.showAdminInfo}">
+            <p:panel rendered="#{userBean.showInfo}">
+                <p:panelGrid columns="2">
+                    <h:outputText value="Name:" />
+                    <h:outputText value="#{userBean.user.name}" /> 
+                    <h:outputText value="Password:" />
+                    <h:outputText value="#{userBean.user.password}" />
+                    <h:outputText value="Number:" />
+                    <h:outputText value="#{userBean.user.number}" />
+                </p:panelGrid>
+            </p:panel>
+            <p:commandButton value="Show" ajax="false"/>
+            <p:selectBooleanCheckbox value="#{userBean.showInfo}" />
+        </h:form>
+        <h:form prependId ="false" rendered="#{userBean.showAdminInfo}">
+            <h:dataTable value="#{service.listUsers()}" var="entry">
+                <h:column>
+                    <f:facet name="header">Name</f:facet>
+                    <h:inputText value="#{entry.name}" rendered="#{entry.editable}" size="10" />
+                    <h:outputText value="#{entry.name}" rendered="#{not entry.editable}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Number</f:facet>
+                    <h:inputText value="#{entry.number}" rendered="#{entry.editable}" size="10" />
+                    <h:outputText value="#{entry.number}" rendered="#{not entry.editable}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Password</f:facet>
+                    <h:inputText value="#{entry.password}" rendered="#{entry.editable}" size="10" />
+                    <h:outputText value="#{entry.password}" rendered="#{not entry.editable}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Edit" action="#{userBean.setEditable(entry)}" rendered="#{not o.editable}" />
+                    <h:commandButton value="Delete" action="#{userBean.deleteUser(entry)}" />
+                </h:column>
+                
+            </h:dataTable>
+            <br />
+            <h:commandButton value="Save Changes" action="#{userBean.saveAction()}" />
+        </h:form>
+        <h:form>
+            <p:commandButton value="Logout" action="#{userBean.logout()}" />
+        </h:form>
+    </h:body>
+</html>
+
